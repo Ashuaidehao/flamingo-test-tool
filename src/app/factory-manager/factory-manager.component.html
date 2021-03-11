@@ -1,0 +1,48 @@
+<div class="dashboard">
+  <div class="left">
+
+    <h4 style="color: blueviolet;">Current Rpc: {{nodeUrl}}
+      <select [(ngModel)]="nodeUrl">
+        <option *ngFor="let rpc of rpcUrls" [value]="rpc.Url">{{rpc.Name}}</option>
+      </select>
+
+      <!-- <select>
+        <option *ngFor="let token of tokens">{{token.name}}</option>
+      </select> -->
+    </h4>
+
+    <h4><span style="color: green;font-weight: bold;">Factory: {{model.factoryContract}} </span>  || <span style="color:red;font-weight: bold;">Admin: {{adminAccount.address}}</span> </h4>
+    <h4>TokenA: {{model.tokenA}} || TokenB: {{model.tokenB}}</h4>
+
+    <h4 style="color: chocolate;">PairAB: {{model.pairContract}}  | Address: {{model.pairContractAddress}}</h4>
+  </div>
+
+</div>
+<div>
+
+  <p> <label>TokenA:
+      <input [(ngModel)]="model.tokenA" placeholder="token0" />
+    </label>
+
+    <label>TokenB:
+      <input [(ngModel)]="model.tokenB" placeholder="token1" />
+    </label></p>
+
+  <label>PairAB:
+    <input [(ngModel)]="model.pairContract" placeholder="交易对合约" />
+  </label>
+  <button (click)="onShow(model.tokenA,model.tokenB)">查找</button>
+  <button (click)="onReset()">重新绑定</button>
+
+  <label>TxId:
+    <input [(ngModel)]="txId" placeholder="交易Id" readonly style="width: 450px;" />
+  </label>
+
+</div>
+
+<div class="error-box">
+  <textarea style="width: 100%;color: red;" rows="10" readonly>
+    {{errorMessage}}
+
+  </textarea>
+</div>
