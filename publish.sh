@@ -1,3 +1,4 @@
+npm install
 ng build
 docker build -t=flamingo-tool .
 docker stop flamingo-test-tool
